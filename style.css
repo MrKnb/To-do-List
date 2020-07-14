@@ -1,0 +1,102 @@
+/* Font import: Muli */
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;600;700&display=swap');
+
+:root {
+  --green: #4c856d;
+  --salmon: #e49273;
+  --black: #484041;
+  --white: #fefefe;
+}
+
+body,
+html {
+  background-color: var(--white);
+  height: 100%;
+}
+
+h1,
+h2,
+span,
+a,
+p {
+  color: var(--black);
+  font-family: 'Muli', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.header {
+  background-color: var(--green);
+  height: 200px;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+}
+
+p.date {
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.categories {
+  background-color: var(--white);
+  width: 100vw;
+  position: fixed;
+  top: 150px;
+  right: 0;
+  left: 10px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.categories-container {
+  padding: 15px 25px 15px 15px;
+}
+
+.category-heading {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category i {
+  font-size: 1.5rem;
+}
+
+.add-category {
+  position: fixed;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.add-category-form {
+  height: 100px;
+  width: 250px;
+  background-color: blue;
+  position: fixed;
+  bottom: 60px;
+  left: 45px;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-size: 1.5rem;
+  background-color: beige;
+  padding: 15px;
+}
