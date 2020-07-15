@@ -71,15 +71,20 @@ p.index-date {
   left: 10px;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  overflow: hidden;
 }
 
 .categories-container {
+  height: 54vh;
   padding: 15px 25px 15px 15px;
+  overflow: scroll;
 }
 
 .category-heading {
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .category {
@@ -111,7 +116,11 @@ p.index-date {
 }
 
 .category i {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.category i+i {
+  margin-left: 15px;
 }
 
 .add-category {
@@ -119,6 +128,14 @@ p.index-date {
   bottom: 30px;
   display: flex;
   align-items: center;
+}
+
+.add-category i {
+  font-size: 2rem;
+}
+
+.add-category p {
+  font-size: 1.5rem;
 }
 
 .add-category-form,
@@ -129,6 +146,19 @@ p.index-date {
   position: fixed;
   bottom: 60px;
   left: 45px;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: .6;
+}
+
+i.check-mark {
+  font-size: 1.2rem;
+}
+
+i.invisible {
+  display: none;
 }
 
 .overlay {

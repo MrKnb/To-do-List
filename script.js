@@ -1,10 +1,3 @@
-/* 
-
-TODO: get elements (by Id)
-
-
-*/
-
 // * The Procedural Way
 
 const date = new Date();
@@ -87,12 +80,24 @@ if (addToDo) {
       const circle = document.createElement("div");
       circle.classList.add("circle");
 
+      const checkMark = document.createElement('i');
+      checkMark.textContent = 'done';
+      checkMark.classList.add('material-icons');
+      checkMark.classList.add('invisible');
+      checkMark.classList.add('check-mark');
+      circle.appendChild(checkMark);
+
       const todoName = document.createElement("p");
       todoName.classList.add("category-link");
       todoName.textContent = todoInput.value.trim();
       circleLink.appendChild(circle);
       circleLink.appendChild(todoName);
       todoEl.appendChild(circleLink);
+
+      circleLink.addEventListener('click', () => {
+        todoName.classList.toggle('done');
+        checkMark.classList.toggle('invisible');
+      })
 
       const icons = document.createElement('div');
       icons.classList.add('icons');
