@@ -61,6 +61,7 @@ if (backToCategory) {
 
 if (addToDo) {
   const todoInput = addTodoForm.querySelector('input');
+  const noTodos = document.getElementById('noTodos');
 
   addToDo.addEventListener('click', () => {
     addTodoForm.classList.remove('invisible');
@@ -76,7 +77,48 @@ if (addToDo) {
   addTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (todoInput.value.trim()) {
-      console.log(todoInput.value);
+
+      const todoEl = document.createElement("div");
+      todoEl.classList.add("category");
+
+      const circleLink = document.createElement("div");
+      circleLink.classList.add("circle-link");
+
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
+
+      const todoName = document.createElement("p");
+      todoName.classList.add("category-link");
+      todoName.textContent = todoInput.value.trim();
+      circleLink.appendChild(circle);
+      circleLink.appendChild(todoName);
+      todoEl.appendChild(circleLink);
+
+      const icons = document.createElement('div');
+      icons.classList.add('icons');
+
+      const editIcon = document.createElement('i');
+      editIcon.classList.add('material-icons');
+      editIcon.textContent = 'create';
+
+      const trashIcon = document.createElement('i');
+      trashIcon.classList.add('material-icons');
+      trashIcon.textContent = 'delete';
+
+      trashIcon.addEventListener('click', () => {
+        document.querySelector('.categories-container').removeChild(todoEl);
+        if (document.querySelector('.categories-container').childElementCount <= 5) {
+          noTodos.classList.remove('invisible');
+        }
+      })
+
+      icons.appendChild(editIcon);
+      icons.appendChild(trashIcon);
+
+      todoEl.appendChild(icons);
+      noTodos.classList.add('invisible');
+      document.querySelector('.categories-container').appendChild(todoEl);
+
       addTodoForm.classList.add("invisible");
       addTodoOverlay.classList.add("invisible");
       todoInput.value = '';
@@ -86,6 +128,7 @@ if (addToDo) {
 
 if (addCategory) {
   const categoryFormInput = addCategoryForm.querySelector('input');
+  const noCategories = document.getElementById('noCategories');
 
   addCategory.addEventListener('click', () => {
     addCategoryForm.classList.remove('invisible');
@@ -121,12 +164,20 @@ if (addCategory) {
       trashIcon.classList.add('material-icons');
       trashIcon.textContent = 'delete';
 
+      trashIcon.addEventListener('click', () => {
+        document.querySelector('.categories-container').removeChild(categoryEl);
+        if (document.querySelector('.categories-container').childElementCount <= 5) {
+          noCategories.classList.remove('invisible');
+        }
+      })
+
       icons.appendChild(editIcon);
       icons.appendChild(trashIcon);
 
       categoryEl.appendChild(icons);
-
+      noCategories.classList.add('invisible');
       document.querySelector('.categories-container').appendChild(categoryEl);
+
 
 
       addCategoryForm.classList.add('invisible');
