@@ -69,6 +69,19 @@ p.date {
   justify-content: space-between;
 }
 
+.circle-link {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
 .category i {
   font-size: 1.5rem;
 }

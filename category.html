@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <title>Todo App</title>
+</head>
+
+<!-- 
+  TODO: add id to date
+  *categoryDate (category.html)
+  *categoriesDate (index.html)
+  TODO: add id to categories-container
+  *toDos (category.html)
+  *categories (index.html)
+  TODO: add id to add-category
+  *addCategory (category.html)
+  *addToDo (index.html)
+ -->
+
+<body>
+  <header class="header">
+    <p class="date" id="categoryDate">Today, 14 July 2020</p>
+  </header>
+  <section class="categories">
+    <div class="categories-container" id="toDos">
+      <h1 class="category-heading">Work</h1>
+      <div class="category">
+        <div class="circle-link">
+          <div class="circle"></div>
+          <a href="#" class="category-link">call boss</a>
+        </div>
+        <div class="icons">
+          <i class="material-icons">create</i>
+          <i class="material-icons">delete</i>
+        </div>
+      </div>
+      <div class="category">
+        <div class="circle-link">
+          <div class="circle"></div>
+          <a href="#" class="category-link">deliver paper</a>
+        </div>
+        <div class="icons">
+          <i class="material-icons">create</i>
+          <i class="material-icons">delete</i>
+        </div>
+      </div>
+      <div class="category">
+        <div class="circle-link">
+          <div class="circle"></div>
+          <a href="#" class="category-link">create flowchart</a>
+        </div>
+        <div class="icons">
+          <i class="material-icons">create</i>
+          <i class="material-icons"> delete</i>
+        </div>
+      </div>
+      <div class="category">
+        <div class="circle-link">
+          <div class="circle"></div>
+          <a href="#" class="category-link">buy printer</a>
+        </div>
+        <div class="icons">
+          <i class="material-icons" id="createToDo">create</i>
+          <i class="material-icons" id="deleteToDo">delete</i>
+        </div>
+      </div>
+      <div class="add-category" id="addCategory">
+        <i class="material-icons">add_circle</i>
+        <p>new todo</p>
+      </div>
+      <div class="overlay invisible"></div>
+      <div class="add-category-form invisible">
+        <input type="text" placeholder="Untitled item... ">
+      </div>
+    </div>
+  </section>
+</body>
+
+
+
+</html>
