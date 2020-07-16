@@ -77,7 +77,7 @@ p.index-date {
 .categories-container {
   height: 54vh;
   padding: 15px 25px 15px 15px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .category-heading {
