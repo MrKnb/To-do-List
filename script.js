@@ -52,6 +52,7 @@ if (backToCategory) {
   })
 }
 
+// start handling todos
 
 if (addToDo) {
   const currentUrl = new URL(window.location.href);
@@ -72,8 +73,10 @@ if (addToDo) {
     todoInput.value = '';
   })
 
+  // display correct category name on each category page
+  categoryHeading.textContent = categoryObject.name;
+
   function renderTodos(name) {
-    categoryHeading.textContent = name;
     const todoEl = document.createElement("div");
     todoEl.classList.add("category");
 
@@ -164,7 +167,7 @@ if (addToDo) {
   })
 }
 
-
+// Start Handling Categories
 
 
 function renderCategories(id, name) {
@@ -196,6 +199,10 @@ function renderCategories(id, name) {
     if (document.querySelector('.categories-container').childElementCount <= 4) {
       noCategories.classList.remove('invisible');
     }
+  })
+
+  editIcon.addEventListener('click', () => {
+    console.log(name);
   })
 
   icons.appendChild(editIcon);
