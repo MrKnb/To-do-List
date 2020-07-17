@@ -58,6 +58,7 @@ if (addToDo) {
   const currentUrlParam = currentUrl.searchParams.get('categoryid');
   const todoInput = addTodoForm.querySelector('input');
   const noTodos = document.getElementById('noTodos');
+  const categoryHeading = document.getElementById('categoryHeading');
   const categoryObject = JSON.parse(localStorage.getItem(currentUrlParam));
 
   addToDo.addEventListener('click', () => {
@@ -72,6 +73,7 @@ if (addToDo) {
   })
 
   function renderTodos(name) {
+    categoryHeading.textContent = name;
     const todoEl = document.createElement("div");
     todoEl.classList.add("category");
 
@@ -106,6 +108,7 @@ if (addToDo) {
       localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
     })
 
+
     const icons = document.createElement('div');
     icons.classList.add('icons');
 
@@ -135,7 +138,6 @@ if (addToDo) {
   }
 
   for (todo of categoryObject.todos) {
-
     renderTodos(todo.name);
   }
 

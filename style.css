@@ -84,7 +84,7 @@ p.index-date {
   font-size: 2rem;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .category {
@@ -121,6 +121,11 @@ p.index-date {
 
 .category i+i {
   margin-left: 15px;
+}
+
+.category-link {
+  word-wrap: break-word;
+  max-width: 200px;
 }
 
 .add-category {
