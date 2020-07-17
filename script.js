@@ -52,121 +52,6 @@ if (backToCategory) {
   })
 }
 
-// start handling todos
-
-if (addToDo) {
-  const currentUrl = new URL(window.location.href);
-  const currentUrlParam = currentUrl.searchParams.get('categoryid');
-  const todoInput = addTodoForm.querySelector('input');
-  const noTodos = document.getElementById('noTodos');
-  const categoryHeading = document.getElementById('categoryHeading');
-  const categoryObject = JSON.parse(localStorage.getItem(currentUrlParam));
-
-  addToDo.addEventListener('click', () => {
-    addTodoForm.classList.remove('invisible');
-    addTodoOverlay.classList.remove('invisible');
-  })
-
-  addTodoOverlay.addEventListener("click", () => {
-    addTodoForm.classList.add("invisible");
-    addTodoOverlay.classList.add("invisible");
-    todoInput.value = '';
-  })
-
-  // display correct category name on each category page
-  categoryHeading.textContent = categoryObject.name;
-
-  function renderTodos(name) {
-    const todoEl = document.createElement("div");
-    todoEl.classList.add("category");
-
-    const circleLink = document.createElement("div");
-    circleLink.classList.add("circle-link");
-
-    const circle = document.createElement("div");
-    circle.classList.add("circle");
-
-    const checkMark = document.createElement('i');
-    checkMark.textContent = 'done';
-    checkMark.classList.add('material-icons');
-    checkMark.classList.add('invisible');
-    checkMark.classList.add('check-mark');
-    circle.appendChild(checkMark);
-
-    const todoName = document.createElement("p");
-    todoName.classList.add("category-link");
-    todoName.textContent = name;
-    circleLink.appendChild(circle);
-    circleLink.appendChild(todoName);
-    todoEl.appendChild(circleLink);
-
-    circleLink.addEventListener('click', () => {
-      todoName.classList.toggle('done');
-      checkMark.classList.toggle('invisible');
-      for (category of categoryObject.todos) {
-        if (category.name == name) {
-          category.done = !category.done;
-        }
-      }
-      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
-    })
-
-
-    const icons = document.createElement('div');
-    icons.classList.add('icons');
-
-    const editIcon = document.createElement('i');
-    editIcon.classList.add('material-icons');
-    editIcon.textContent = 'create';
-
-    const trashIcon = document.createElement('i');
-    trashIcon.classList.add('material-icons');
-    trashIcon.textContent = 'delete';
-
-    trashIcon.addEventListener('click', () => {
-      document.querySelector('.categories-container').removeChild(todoEl);
-      categoryObject.todos = categoryObject.todos.filter(todo => (todo.name != name));
-      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
-      if (document.querySelector('.categories-container').childElementCount <= 4) {
-        noTodos.classList.remove('invisible');
-      }
-    })
-
-    icons.appendChild(editIcon);
-    icons.appendChild(trashIcon);
-
-    todoEl.appendChild(icons);
-    noTodos.classList.add('invisible');
-    document.querySelector('.categories-container').appendChild(todoEl);
-  }
-
-  for (todo of categoryObject.todos) {
-    renderTodos(todo.name);
-  }
-
-
-
-  addTodoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (todoInput.value.trim()) {
-
-      const todo = {
-        name: todoInput.value.trim(),
-        done: false
-      }
-
-      // add todos to localstorage
-      categoryObject.todos.push(todo);
-      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
-      renderTodos(todo.name);
-
-      addTodoForm.classList.add("invisible");
-      addTodoOverlay.classList.add("invisible");
-      todoInput.value = '';
-    }
-  })
-}
-
 // Start Handling Categories
 
 
@@ -218,10 +103,6 @@ function renderCategories(id, name) {
   addCategoryOverlay.classList.add('invisible');
 }
 
-
-
-
-
 if (addCategory) {
 
   if (localStorage.length > 0) {
@@ -260,6 +141,123 @@ if (addCategory) {
       addCategoryForm.classList.add('invisible');
       addCategoryOverlay.classList.add('invisible');
       categoryFormInput.value = 'Untitled category';
+    }
+  })
+}
+
+// start handling todos
+
+if (addToDo) {
+  const currentUrl = new URL(window.location.href);
+  const currentUrlParam = currentUrl.searchParams.get('categoryid');
+  const todoInput = addTodoForm.querySelector('input');
+  const noTodos = document.getElementById('noTodos');
+  const categoryHeading = document.getElementById('categoryHeading');
+  const categoryObject = JSON.parse(localStorage.getItem(currentUrlParam));
+
+  addToDo.addEventListener('click', () => {
+    addTodoForm.classList.remove('invisible');
+    addTodoOverlay.classList.remove('invisible');
+  })
+
+  addTodoOverlay.addEventListener("click", () => {
+    addTodoForm.classList.add("invisible");
+    addTodoOverlay.classList.add("invisible");
+    todoInput.value = '';
+  })
+
+  // display correct category name on each category todo page
+  categoryHeading.textContent = categoryObject.name;
+
+  function renderTodos(name) {
+    const todoEl = document.createElement("div");
+    todoEl.classList.add("category");
+
+    const circleLink = document.createElement("div");
+    circleLink.classList.add("circle-link");
+
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    const checkMark = document.createElement('i');
+    checkMark.textContent = 'done';
+    checkMark.classList.add('material-icons');
+    checkMark.classList.add('invisible');
+    checkMark.classList.add('check-mark');
+    circle.appendChild(checkMark);
+
+    const todoName = document.createElement("p");
+    todoName.classList.add("category-link");
+    todoName.textContent = name;
+    circleLink.appendChild(circle);
+    circleLink.appendChild(todoName);
+    todoEl.appendChild(circleLink);
+
+    // toggle done or undone
+    circleLink.addEventListener('click', () => {
+      todoName.classList.toggle('done');
+      checkMark.classList.toggle('invisible');
+      for (category of categoryObject.todos) {
+        if (category.name == name) {
+          category.done = !category.done;
+        }
+      }
+      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
+    })
+
+
+    const icons = document.createElement('div');
+    icons.classList.add('icons');
+
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('material-icons');
+    editIcon.textContent = 'create';
+
+    const trashIcon = document.createElement('i');
+    trashIcon.classList.add('material-icons');
+    trashIcon.textContent = 'delete';
+
+    // delete todo 
+    trashIcon.addEventListener('click', () => {
+      document.querySelector('.categories-container').removeChild(todoEl);
+      categoryObject.todos = categoryObject.todos.filter(todo => (todo.name != name));
+      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
+      if (document.querySelector('.categories-container').childElementCount <= 4) {
+        noTodos.classList.remove('invisible');
+      }
+    })
+
+    icons.appendChild(editIcon);
+    icons.appendChild(trashIcon);
+
+    todoEl.appendChild(icons);
+    noTodos.classList.add('invisible');
+    document.querySelector('.categories-container').appendChild(todoEl);
+  }
+
+  for (todo of categoryObject.todos) {
+    renderTodos(todo.name);
+  }
+
+
+
+  addTodoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (todoInput.value.trim()) {
+
+      const todo = {
+        name: todoInput.value.trim(),
+        done: false
+      }
+
+      // add todos to localstorage
+      categoryObject.todos.push(todo);
+      localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
+      renderTodos(todo.name);
+
+      addTodoForm.classList.add("invisible");
+      addTodoOverlay.classList.add("invisible");
+      todoInput.value = '';
     }
   })
 }
