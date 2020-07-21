@@ -1,5 +1,6 @@
 import CategoryForm from './categoryForm.js'
 import Category from './category.js'
+import Date from './date.js'
 class Categories {
   static renderCategories() {
     for (let prop in localStorage) {
@@ -11,5 +12,7 @@ class Categories {
     }
   }
 }
+
+Date.displayDate();
 new CategoryForm();
 Categories.renderCategories();

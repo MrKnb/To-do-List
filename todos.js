@@ -1,10 +1,12 @@
 import TodoForm from './todoForm.js'
 import Todo from './todo.js';
+import Date from './date.js'
 
 const CATEGORY_ID = new URL(window.location.href).searchParams.get('categoryid');
 const PARENT_CATEGORY = JSON.parse(localStorage.getItem(CATEGORY_ID));
-const categoryNameHeading = document.getElementById('categoryHeading');
-categoryNameHeading.textContent = PARENT_CATEGORY.name;
+
+const CATEGORY_NAME_HEADING = document.getElementById('categoryHeading');
+CATEGORY_NAME_HEADING.textContent = PARENT_CATEGORY.name;
 export default class Todos {
   static renderTodos() {
 
@@ -29,5 +31,6 @@ export default class Todos {
 
   }
 }
+Date.displayDate();
 new TodoForm();
 Todos.renderTodos();
