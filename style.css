@@ -62,7 +62,7 @@ p.index-date {
   margin-top: 104px;
 }
 
-.categories {
+.main-container {
   background-color: var(--white);
   width: 100vw;
   position: absolute;
@@ -74,13 +74,13 @@ p.index-date {
   overflow: hidden;
 }
 
-.categories-container {
+.items-container {
   height: 54vh;
   padding: 15px 25px 15px 15px;
   overflow: auto;
 }
 
-.category-heading {
+.item-heading {
   font-size: 2rem;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -128,23 +128,22 @@ p.index-date {
   max-width: 200px;
 }
 
-.add-category {
+.add-item {
   position: fixed;
   bottom: 30px;
   display: flex;
   align-items: center;
 }
 
-.add-category i {
+.add-item i {
   font-size: 2rem;
 }
 
-.add-category p {
+.add-item p {
   font-size: 1.5rem;
 }
 
-.add-category-form,
-.add-todo-form {
+.add-item-form {
   height: 100px;
   width: 250px;
   background-color: blue;

@@ -79,9 +79,9 @@ function renderCategories(id, name) {
   trashIcon.textContent = 'delete';
 
   trashIcon.addEventListener('click', () => {
-    document.querySelector('.categories-container').removeChild(categoryEl);
+    document.querySelector('.items-container').removeChild(categoryEl);
     localStorage.removeItem(`${id}`);
-    if (document.querySelector('.categories-container').childElementCount <= 4) {
+    if (document.querySelector('.items-container').childElementCount <= 4) {
       noCategories.classList.remove('invisible');
     }
   })
@@ -96,7 +96,7 @@ function renderCategories(id, name) {
   categoryEl.appendChild(icons);
   noCategories.classList.add('invisible');
 
-  document.querySelector('.categories-container').appendChild(categoryEl);
+  document.querySelector('.items-container').appendChild(categoryEl);
 
 
   addCategoryForm.classList.add('invisible');
@@ -197,9 +197,9 @@ if (addToDo) {
     circleLink.addEventListener('click', () => {
       todoName.classList.toggle('done');
       checkMark.classList.toggle('invisible');
-      for (category of categoryObject.todos) {
-        if (category.name == name) {
-          category.done = !category.done;
+      for (todo of categoryObject.todos) {
+        if (todo.name == name) {
+          todo.done = !todo.done;
         }
       }
       localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
@@ -219,10 +219,10 @@ if (addToDo) {
 
     // delete todo 
     trashIcon.addEventListener('click', () => {
-      document.querySelector('.categories-container').removeChild(todoEl);
+      document.querySelector('.items-container').removeChild(todoEl);
       categoryObject.todos = categoryObject.todos.filter(todo => (todo.name != name));
       localStorage.setItem(currentUrlParam, JSON.stringify(categoryObject));
-      if (document.querySelector('.categories-container').childElementCount <= 4) {
+      if (document.querySelector('.items-container').childElementCount <= 4) {
         noTodos.classList.remove('invisible');
       }
     })
@@ -232,7 +232,7 @@ if (addToDo) {
 
     todoEl.appendChild(icons);
     noTodos.classList.add('invisible');
-    document.querySelector('.categories-container').appendChild(todoEl);
+    document.querySelector('.items-container').appendChild(todoEl);
   }
 
   for (todo of categoryObject.todos) {

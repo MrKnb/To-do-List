@@ -7,38 +7,36 @@
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="script.js" defer></script>
+  <script type="module" src="todos.js" defer></script>
   <title>Todo App</title>
 </head>
 
 <body>
   <header class="header">
-    <div class="back-to-category" id="backToCategory">
+    <a class="back-to-category" id="backToCategory" href="index.html">
       <i class="material-icons">arrow_back_ios</i>
       <p>Categories</p>
-    </div>
+    </a>
     <p class="date" id="categoryDate"></p>
   </header>
-  <section class="categories">
-    <h1 class="category-heading" id="categoryHeading">Dynamic Name</h1>
-    <div class="categories-container" id="toDos">
-      <p class="no-todos" id="noTodos">You don't have any to do's.</p>
-      <div class="add-category" id="addToDo">
+  <section class="main-container">
+    <h1 class="item-heading" id="categoryHeading">Dynamic Name</h1>
+    <div class="items-container" id="toDos">
+      <p id="noTodos">You don't have any to do's.</p>
+      <div class="add-item" id="addToDo">
         <i class="material-icons">add_circle</i>
         <p>new todo</p>
       </div>
       <div class="overlay invisible" id="addTodoOverlay">
       </div>
-      <form class="add-todo-form invisible" id="addTodoForm">
+      <form class="add-item-form invisible" id="addTodoForm">
         <input type="text" placeholder="Untitled item... ">
-        <button class="overlay-text" type="submit">done</button>
+        <button class="overlay-text" type="submit" id="done">done</button>
       </form>
     </div>
   </section>
 </body>
 
 
-
-</html>
 
 </html>

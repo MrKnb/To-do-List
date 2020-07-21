@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="script.js" defer></script>
+  <script type="module" src="categories.js" defer></script>
   <title>Todo App</title>
 </head>
 
@@ -15,20 +15,20 @@
   <header class="header">
     <p class="date index-date" id="categoriesDate"></p>
   </header>
-  <section class="categories">
-    <h1 class="category-heading">Categories</h1>
-    <div class="categories-container" id="categories">
+  <section class="main-container">
+    <h1 class="item-heading">Categories</h1>
+    <div class="items-container" id="categories">
       <!-- this is where categories will go -->
-      <p class="no-categories" id="noCategories">You haven't created any categories yet</p>
+      <p id="noCategories">You haven't created any categories yet</p>
       <!-- add icon and text -->
-      <div class="add-category" id="addCategory">
+      <div class="add-item" id="addCategory">
         <i class="material-icons">add_circle</i>
         <p>new category</p>
       </div>
       <!-- overlay and form intially invisible -->
       <div class="overlay invisible" id="addCategoryOverlay">
       </div>
-      <form class="add-category-form invisible" id="addCategoryForm">
+      <form class="add-item-form invisible" id="addCategoryForm">
         <input type="text" value="Untitled category">
         <button class="overlay-text" type="submit">done</button>
       </form>
