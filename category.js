@@ -5,15 +5,15 @@ export default class Category {
     this.todos = [];
   }
 
-  render() {
+  static render(name, id) {
     const noCategories = document.getElementById('noCategories');
 
     const categoryEl = document.createElement('div');
     categoryEl.classList.add('category');
-    const categoryLink = document.createElement("a");
-    categoryLink.classList.add("category-link");
-    categoryLink.href = `./category.html?categoryid=${this.id}`;
-    categoryLink.textContent = this.name;
+    const categoryLink = document.createElement('a');
+    categoryLink.classList.add('category-link');
+    categoryLink.href = `./category.html?categoryid=${id}`;
+    categoryLink.textContent = name;
     categoryEl.appendChild(categoryLink);
 
     const icons = document.createElement('div');
@@ -29,15 +29,15 @@ export default class Category {
 
     trashIcon.addEventListener('click', () => {
       document.querySelector('.items-container').removeChild(categoryEl);
-      localStorage.removeItem(`${this.id}`);
+      localStorage.removeItem(`${id}`);
       if (document.querySelector('.items-container').childElementCount <= 4) {
         noCategories.classList.remove('invisible');
       }
-    })
+    });
 
     editIcon.addEventListener('click', () => {
-      console.log(this.name);
-    })
+
+    });
 
     icons.appendChild(editIcon);
     icons.appendChild(trashIcon);
@@ -48,7 +48,5 @@ export default class Category {
     document.querySelector('.items-container').appendChild(categoryEl);
 
 
-    addCategoryForm.classList.add('invisible');
-    addCategoryOverlay.classList.add('invisible');
   }
 }

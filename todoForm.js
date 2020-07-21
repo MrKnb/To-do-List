@@ -38,7 +38,7 @@ export default class TodoForm {
     }
 
     const newTodo = new Todo(inputValue, false);
-    newTodo.render();
+    newTodo.pushData();
     this.hideFormHandler();
   }
 }

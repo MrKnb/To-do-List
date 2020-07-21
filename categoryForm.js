@@ -41,7 +41,7 @@ export default class CategoryForm {
     }
 
     const newCategory = new Category(inputValue);
-    newCategory.render();
+    Category.render(newCategory.name, newCategory.id);
     localStorage.setItem(newCategory.id, JSON.stringify(newCategory));
     this.hideFormHandler();
   }
